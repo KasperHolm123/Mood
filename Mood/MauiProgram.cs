@@ -1,4 +1,5 @@
 ﻿using Mood.ViewModels;
+using Mood.Views;
 using Plugin.LocalNotification;
 
 namespace Mood;

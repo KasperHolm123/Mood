@@ -1,4 +1,6 @@
-﻿namespace Mood;
+﻿using Mood.Views;
+
+namespace Mood;
 
 public partial class AppShell : Shell
 {

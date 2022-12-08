@@ -1,6 +1,6 @@
 using Mood.ViewModels;
 
-namespace Mood;
+namespace Mood.Views;
 
 public partial class MoodCreationView : ContentPage
 {

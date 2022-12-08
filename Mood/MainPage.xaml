@@ -19,21 +19,36 @@
             </Button.GestureRecognizers>
         </Button>
         <ScrollView
+            Margin="0, 50, 0, 50"
             VerticalOptions="Center">
             <VerticalStackLayout
                 Spacing="25"
                 Padding="30,0"
                 VerticalOptions="Center">
-                
-                <Button
-                    x:Name="entry1">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </Button.GestureRecognizers>
-                </Button>
 
-                </VerticalStackLayout>
+                <Button
+                    WidthRequest="200"
+                    HeightRequest="250">
+                </Button>
+                <Button
+                    WidthRequest="200"
+                    HeightRequest="250">
+                </Button>
+                <Button
+                    WidthRequest="200"
+                    HeightRequest="250">
+                </Button>
+                
+
+            </VerticalStackLayout>
         </ScrollView>
+        <HorizontalStackLayout
+            VerticalOptions="End">
+            <Button
+                Text="Test footer elem">
+                
+            </Button>
+        </HorizontalStackLayout>
     </Grid>
 
 </ContentPage>
