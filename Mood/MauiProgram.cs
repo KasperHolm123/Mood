@@ -1,4 +1,5 @@
-﻿using Plugin.LocalNotification;
+﻿using Mood.ViewModels;
+using Plugin.LocalNotification;
 
 namespace Mood;
 public static class MauiProgram
@@ -8,13 +9,20 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseLocalNotification()
+			//.UseLocalNotification()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		// AddSingleton keeps the page and viewmodel in memory
+		builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainViewModel>();
+
+		// AddTransient kills the page and viewmodel everytime it is left by the user
+        builder.Services.AddTransient<MoodCreationView>();
+        builder.Services.AddTransient<MoodCreationViewModel>();
 
         return builder.Build();
 	}
