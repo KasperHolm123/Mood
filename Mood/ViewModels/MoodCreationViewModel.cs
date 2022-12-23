@@ -13,7 +13,7 @@ namespace Mood.ViewModels
         [RelayCommand]
         async Task CreateEntry()
         {
-            await Shell.Current.GoToAsync(nameof(MainPage));
+            await Shell.Current.GoToAsync("..");
         }
 
         async Task GoToMainView()
