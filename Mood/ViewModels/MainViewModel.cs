@@ -7,6 +7,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Plugin.LocalNotification;
 using Mood.Views;
+using Mood.Systems;
+using Mood.Models;
 
 namespace Mood.ViewModels
 {
@@ -20,20 +22,13 @@ namespace Mood.ViewModels
         [RelayCommand]
         private void CreateMood()
         {
-            var request = new NotificationRequest
+            var mood = new MoodEntry
             {
-                NotificationId = 1,
-                Title = "Test notification",
-                Subtitle = "Test",
-                Description = "This is a test notification",
-                BadgeNumber = 0,
-                Schedule = new NotificationRequestSchedule
-                {
-                    NotifyTime = DateTime.Now.AddSeconds(5)
-                }
+                CreationDate = DateTime.Now,
+                CreationTime = DateTime.Now,
+                Mood = MoodEnum.Good
             };
-
-            LocalNotificationCenter.Current.Show(request);
+            MoodEntryGenerator.ReturnTemplate(ObjectTemplate.MoodEntryTemplate, mood);
         }
 
         [RelayCommand]

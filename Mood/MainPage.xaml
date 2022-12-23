@@ -22,31 +22,22 @@
             Margin="0, 50, 0, 50"
             VerticalOptions="Center">
             <VerticalStackLayout
+                x:Name="mainStack"
                 Spacing="25"
                 Padding="30,0"
                 VerticalOptions="Center">
-
-                <Button
-                    WidthRequest="200"
-                    HeightRequest="250">
-                </Button>
-                <Button
-                    WidthRequest="200"
-                    HeightRequest="250">
-                </Button>
-                <Button
-                    WidthRequest="200"
-                    HeightRequest="250">
-                </Button>
-                
-
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout
             VerticalOptions="End">
             <Button
-                Text="Test footer elem">
-                
+                Text="Front">
+            </Button>
+            <Button
+                Text="Graph">
+            </Button>
+            <Button
+                Text="TODO">
             </Button>
         </HorizontalStackLayout>
     </Grid>

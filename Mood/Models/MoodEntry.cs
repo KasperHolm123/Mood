@@ -10,11 +10,11 @@ namespace Mood.Models
     {
         public DateTime CreationDate { get; set; }
         public DateTime CreationTime { get; set; }
-        public Mood Mood { get; set; }
+        public MoodEnum Mood { get; set; }
 
     }
 
-    public enum Mood
+    public enum MoodEnum
     {
         VeryGood = 5,
         Good = 4,
