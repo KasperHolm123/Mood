@@ -21,10 +21,10 @@
         </Button>
         <ScrollView
             Margin="0, 50, 0, 50"
-            VerticalOptions="Center">
+            VerticalOptions="Start">
             <VerticalStackLayout
                 x:Name="mainStack"
-                Spacing="25"
+                Spacing="15"
                 Padding="30,0"
                 VerticalOptions="Center"
                 BindableLayout.ItemsSource="{Binding MoodEntries}">
