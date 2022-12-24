@@ -26,7 +26,7 @@ namespace Mood.Models.ViewTemplates
             */
             grid = new()
             {
-                Text = "breh"
+                Text = m.Mood.ToString()
             };
         }
     }

@@ -15,17 +15,21 @@ namespace Mood.Systems
         /// Returns an object used in the UI layer
         /// </summary>
         /// <param name="x"></param>
-        /// <param name="m"></param>
         /// <returns></returns>
+        public static object ReturnTemplate(ObjectTemplate x)
+        {
+            return x switch
+            {
+                _ => default,
+            };
+        }
         public static object ReturnTemplate(ObjectTemplate x, MoodEntry m)
         {
-            switch (x)
+            return x switch
             {
-                case ObjectTemplate.MoodEntryTemplate:
-                    return new MoodEntryTemplate(m).grid;
-                default:
-                    return default;
-            }
+                ObjectTemplate.MoodEntryTemplate => new MoodEntryTemplate(m).grid,
+                _ => default,
+            };
         }
     }
 

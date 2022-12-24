@@ -10,6 +10,11 @@ namespace Mood.ViewModels
     public partial class MoodCreationViewModel
     {
 
+        public MoodCreationViewModel()
+        {
+
+        }
+
         [RelayCommand]
         async Task CreateEntry()
         {

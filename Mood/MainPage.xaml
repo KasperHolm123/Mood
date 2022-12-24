@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mood.MainPage"
              xmlns:viewmodel="clr-namespace:Mood.ViewModels"
+             xmlns:model="clr-namespace:Mood.Models"
              x:DataType="viewmodel:MainViewModel">
 
     <Grid>
@@ -28,8 +29,18 @@
                 VerticalOptions="Center"
                 BindableLayout.ItemsSource="{Binding MoodEntries}">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding Text}" /> <!-- doesn't work -->
+                    <DataTemplate x:DataType="model:MoodEntry">
+                        <Border
+                            StrokeShape="RoundRectangle 5, 5, 5, 5">
+                            <Grid>
+                                <Label Text="{Binding CreationDate}"
+                                       Margin="10, 0, 0, 0"/>
+                                <Label Text="{Binding CreationTime}"
+                                       Margin="110, 0, 0, 0"/>
+                                <Label Text="{Binding Mood}"
+                                       Margin="10, 50, 0, 0"/>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
