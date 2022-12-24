@@ -16,8 +16,7 @@ namespace Mood.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        // holds all existing and newly created entries
-        public ObservableCollection<object> MoodEntries { get; set; }
+        public ObservableCollection<object> MoodEntries { get; set; } // holds all existing and newly created entries
 
         public MainViewModel()
         {
@@ -32,9 +31,9 @@ namespace Mood.ViewModels
         {
             var mood = new MoodEntry
             {
-                CreationDate = DateTime.Now,
+                CreationDate = DateTime.Now, // date should be changed to get their data from a datepicker in the UI.
                 CreationTime = DateTime.Now,
-                Mood = MoodEnum.Good
+                Mood = MoodEnum.Good // the mood should also depend on which button the user taps on.
             };
             MoodEntries.Add(MoodEntryGenerator.ReturnTemplate(ObjectTemplate.MoodEntryTemplate, mood));
         }
@@ -44,7 +43,7 @@ namespace Mood.ViewModels
         /// </summary>
         /// <returns></returns>
         [RelayCommand]
-        async Task Tap()
+        async Task Tap() // change name
         {
             await Shell.Current.GoToAsync(nameof(MoodCreationView));
         }

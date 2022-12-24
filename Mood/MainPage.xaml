@@ -29,7 +29,7 @@
                 BindableLayout.ItemsSource="{Binding MoodEntries}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Label Text="{Binding Text}" />
+                        <Label Text="{Binding Text}" /> <!-- doesn't work -->
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
