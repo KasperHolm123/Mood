@@ -7,18 +7,27 @@ using Mood.Models;
 
 namespace Mood.Models.ViewTemplates
 {
+    /// <summary>
+    /// Mood entry template to be used in the UI layer
+    /// </summary>
     public class MoodEntryTemplate
     {
-        public MoodEntryTemplate(MoodEntry mood)
+        public Label grid;
+        public MoodEntryTemplate(MoodEntry m)
         {
-            var grid = new Grid();
-
+            /*
+            grid = new();
             var label = new Label()
             {
-                Text=mood.Mood.ToString(),
+                Text = mood.Mood.ToString(),
             };
 
             grid.Children.Add(label);
+            */
+            grid = new()
+            {
+                Text = "breh"
+            };
         }
     }
 }

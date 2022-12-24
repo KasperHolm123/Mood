@@ -11,18 +11,27 @@ namespace Mood.Systems
 {
     public static class MoodEntryGenerator
     {
-        public static object ReturnTemplate(ObjectTemplate x, MoodEntry mood)
+        /// <summary>
+        /// Returns an object used in the UI layer
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        public static object ReturnTemplate(ObjectTemplate x, MoodEntry m)
         {
             switch (x)
             {
                 case ObjectTemplate.MoodEntryTemplate:
-                    return new MoodEntryTemplate(mood);
+                    return new MoodEntryTemplate(m).grid;
                 default:
                     return default;
             }
         }
     }
 
+    /// <summary>
+    /// Contains all available UI templates
+    /// </summary>
     public enum ObjectTemplate
     {
         MoodEntryTemplate = 0,

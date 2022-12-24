@@ -25,13 +25,20 @@
                 x:Name="mainStack"
                 Spacing="25"
                 Padding="30,0"
-                VerticalOptions="Center">
+                VerticalOptions="Center"
+                BindableLayout.ItemsSource="{Binding MoodEntries}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Text}" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout
             VerticalOptions="End">
             <Button
-                Text="Front">
+                Text="Front"
+                Command="{Binding CreateMoodCommand}">
             </Button>
             <Button
                 Text="Graph">
