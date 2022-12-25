@@ -33,7 +33,7 @@
                         <Border
                             StrokeShape="RoundRectangle 5, 5, 5, 5">
                             <Grid>
-                                <Image Source="verygood.png"
+                                <Image Source="{Binding Picture}"
                                        WidthRequest="60"
                                        HeightRequest="60"
                                        HorizontalOptions="Start"

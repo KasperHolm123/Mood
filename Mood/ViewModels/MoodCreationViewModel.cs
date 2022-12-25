@@ -28,7 +28,8 @@ namespace Mood.ViewModels
             {
                 CreationDate = DateTime.Now.ToString("M"), // date should be changed to get their data from a datepicker in the UI.
                 CreationTime = DateTime.Now.ToString("T"),
-                Mood = (MoodEnum)int.Parse(x) // the mood should also depend on which button the user taps on.
+                Mood = (MoodEnum)int.Parse(x),
+                Picture = MoodPictures.ReturnPicture(x)
             };
             await Shell.Current.GoToAsync("..", new Dictionary<string, object>
             {

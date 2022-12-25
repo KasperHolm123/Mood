@@ -29,7 +29,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="5"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="1"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -44,7 +44,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="4"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="2"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -74,7 +74,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="2"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="4"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -89,7 +89,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="1"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="5"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
