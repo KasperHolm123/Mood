@@ -19,75 +19,79 @@
             VerticalOptions="Center"
             Margin="0, 50, 0, 0">
             <Grid
-                HeightRequest="60">
-                <Button
-                    FontSize="10"
-                    VerticalOptions="Start"
-                    WidthRequest="80">
-                    <Button.GestureRecognizers>
+                HeightRequest="64"
+                WidthRequest="64"
+                Margin="0, 0, 10, 0">
+                <ImageButton Source="verygood.png"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="64"
+                     HeightRequest="64">
+                    <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Int32 5}"/>
-                    </Button.GestureRecognizers>
-                </Button>
-                <Label Text="Very Good"
-                       VerticalOptions="End"
-                       HorizontalOptions="Center"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="1"/>
+                    </ImageButton.GestureRecognizers>
+                </ImageButton>
             </Grid>
             <Grid
-                HeightRequest="60">
-                <Button
-                    FontSize="10"
-                    VerticalOptions="Start"
-                    WidthRequest="80">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </Button.GestureRecognizers>
-                </Button>
-                <Label Text="Good"
-                       VerticalOptions="End"
-                       HorizontalOptions="Center"/>
+                HeightRequest="64"
+                WidthRequest="64"
+                Margin="0, 0, 10, 0">
+                <ImageButton Source="good.png"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="64"
+                     HeightRequest="64">
+                    <ImageButton.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding CreateEntryCommand}" CommandParameter="2"/>
+                    </ImageButton.GestureRecognizers>
+                </ImageButton>
             </Grid>
             <Grid
-                HeightRequest="60">
-                <Button
-                    FontSize="10"
-                    VerticalOptions="Start"
-                    WidthRequest="80">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </Button.GestureRecognizers>
-                </Button>
-                <Label Text="Decent"
-                       VerticalOptions="End"
-                       HorizontalOptions="Center"/>
+                HeightRequest="64"
+                WidthRequest="64"
+                Margin="0, 0, 10, 0">
+                <ImageButton Source="decent.png"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="64"
+                     HeightRequest="64">
+                    <ImageButton.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding CreateEntryCommand}" CommandParameter="3"/>
+                    </ImageButton.GestureRecognizers>
+                </ImageButton>
             </Grid>
             <Grid
-                HeightRequest="60">
-                <Button
-                    FontSize="10"
-                    VerticalOptions="Start"
-                    WidthRequest="80">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </Button.GestureRecognizers>
-                </Button>
-                <Label Text="Bad"
-                       VerticalOptions="End"
-                       HorizontalOptions="Center"/>
+                HeightRequest="64"
+                WidthRequest="64"
+                Margin="0, 0, 10, 0">
+                <ImageButton Source="bad.png"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="64"
+                     HeightRequest="64">
+                    <ImageButton.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding CreateEntryCommand}" CommandParameter="4"/>
+                    </ImageButton.GestureRecognizers>
+                </ImageButton>
             </Grid>
             <Grid
-                HeightRequest="60">
-                <Button
-                    FontSize="10"
-                    VerticalOptions="Start"
-                    WidthRequest="80">
-                    <Button.GestureRecognizers>
-                        <TapGestureRecognizer />
-                    </Button.GestureRecognizers>
-                </Button>
-                <Label Text="Very Bad"
-                       VerticalOptions="End"
-                       HorizontalOptions="Center"/>
+                HeightRequest="64"
+                WidthRequest="64"
+                Margin="0, 0, 10, 0">
+                <ImageButton Source="verybad.png"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     WidthRequest="64"
+                     HeightRequest="64">
+                    <ImageButton.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding CreateEntryCommand}" CommandParameter="5"/>
+                    </ImageButton.GestureRecognizers>
+                </ImageButton>
             </Grid>
         </HorizontalStackLayout>
     </VerticalStackLayout>

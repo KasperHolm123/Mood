@@ -16,21 +16,24 @@ using System.ComponentModel;
 namespace Mood.ViewModels
 {
 
-    [QueryProperty("NewMoodEntry", "NewMoodEntry")]
-    public partial class MainViewModel : ObservableObject
+    //[QueryProperty("MoodEntry", "NewMoodEntry")]
+    public partial class MainViewModel : ObservableObject, IQueryAttributable
     {
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
 
-        // This field holds the most recently created MoodEntry
-        MoodEntry newMoodEntry;
-        public MoodEntry NewMoodEntry
+        /// <summary>
+        /// Apply query attributes if any are supplied.
+        /// Any and all atttributes will be cleared after use.
+        /// </summary>
+        /// <param name="query"></param>
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            get => newMoodEntry;
-            set
+            if (query.ContainsKey("NewMoodEntry"))
             {
-                newMoodEntry = value;
-                MoodEntries.Add(newMoodEntry);
+                MoodEntries.Add(query["NewMoodEntry"] as MoodEntry);
             }
+            query.Clear();
+
         }
 
         public MainViewModel()
