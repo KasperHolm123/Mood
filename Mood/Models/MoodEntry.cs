@@ -8,13 +8,13 @@ namespace Mood.Models
 {
     public class MoodEntry
     {
-        public DateTime CreationDate { get; set; }
-        public DateTime CreationTime { get; set; }
-        public Mood Mood { get; set; }
+        public string CreationDate { get; set; }
+        public string CreationTime { get; set; }
+        public MoodEnum Mood { get; set; }
 
     }
 
-    public enum Mood
+    public enum MoodEnum
     {
         VeryGood = 5,
         Good = 4,

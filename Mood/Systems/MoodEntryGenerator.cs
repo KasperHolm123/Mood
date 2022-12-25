@@ -3,26 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mood.Models;
 using Mood.Models.ViewTemplates;
 using Mood.Systems;
 
 namespace Mood.Systems
 {
-    public static class MoodEntryGenerator<T>
+    public static class MoodEntryGenerator
     {
-        public static object ReturnTemplate(Template x)
+        /// <summary>
+        /// Returns an object used in the UI layer
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static object ReturnTemplate(ObjectTemplate x)
         {
-            switch (x)
+            return x switch
             {
-                case Template.MoodEntryTemplate:
-                    return new MoodEntryTemplate();
-                default:
-                    return default;
-            }
+                _ => default,
+            };
+        }
+        public static object ReturnTemplate(ObjectTemplate x, MoodEntry m)
+        {
+            return x switch
+            {
+                ObjectTemplate.MoodEntryTemplate => new MoodEntryTemplate(m).grid,
+                _ => default,
+            };
         }
     }
 
-    public enum Template
+    /// <summary>
+    /// Contains all available UI templates
+    /// </summary>
+    public enum ObjectTemplate
     {
         MoodEntryTemplate = 0,
     }

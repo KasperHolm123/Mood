@@ -1,12 +1,94 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Mood.ViewModels"
+             x:DataType="viewmodel:MoodCreationViewModel"
              x:Class="Mood.Views.MoodCreationView"
              Title="MoodCreationView">
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label
+            Text="How are you?"
+            HorizontalOptions="Center"
+            FontSize="28"
+            FontAttributes="Bold"
+            Margin="0, 50, 0, 0">
+        </Label>
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Margin="0, 50, 0, 0">
+            <Grid
+                HeightRequest="60">
+                <Button
+                    FontSize="10"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Int32 5}"/>
+                    </Button.GestureRecognizers>
+                </Button>
+                <Label Text="Very Good"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"/>
+            </Grid>
+            <Grid
+                HeightRequest="60">
+                <Button
+                    FontSize="10"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Button.GestureRecognizers>
+                </Button>
+                <Label Text="Good"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"/>
+            </Grid>
+            <Grid
+                HeightRequest="60">
+                <Button
+                    FontSize="10"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Button.GestureRecognizers>
+                </Button>
+                <Label Text="Decent"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"/>
+            </Grid>
+            <Grid
+                HeightRequest="60">
+                <Button
+                    FontSize="10"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Button.GestureRecognizers>
+                </Button>
+                <Label Text="Bad"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"/>
+            </Grid>
+            <Grid
+                HeightRequest="60">
+                <Button
+                    FontSize="10"
+                    VerticalOptions="Start"
+                    WidthRequest="80">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Button.GestureRecognizers>
+                </Button>
+                <Label Text="Very Bad"
+                       VerticalOptions="End"
+                       HorizontalOptions="Center"/>
+            </Grid>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

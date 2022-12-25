@@ -7,39 +7,45 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Plugin.LocalNotification;
 using Mood.Views;
+using Mood.Systems;
+using Mood.Models;
+using System.Collections.ObjectModel;
+using Mood.Models.ViewTemplates;
+using System.ComponentModel;
 
 namespace Mood.ViewModels
 {
+
+    [QueryProperty("NewMoodEntry", "NewMoodEntry")]
     public partial class MainViewModel : ObservableObject
     {
+        public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
+
+        // This field holds the most recently created MoodEntry
+        MoodEntry newMoodEntry;
+        public MoodEntry NewMoodEntry
+        {
+            get => newMoodEntry;
+            set
+            {
+                newMoodEntry = value;
+                MoodEntries.Add(newMoodEntry);
+            }
+        }
+
         public MainViewModel()
         {
-
+            MoodEntries = new();
         }
 
+        /// <summary>
+        /// Changes the current page to MoodCreationView
+        /// </summary>
+        /// <returns></returns>
         [RelayCommand]
-        private void CreateMood()
+        async Task ChangeView(string v)
         {
-            var request = new NotificationRequest
-            {
-                NotificationId = 1,
-                Title = "Test notification",
-                Subtitle = "Test",
-                Description = "This is a test notification",
-                BadgeNumber = 0,
-                Schedule = new NotificationRequestSchedule
-                {
-                    NotifyTime = DateTime.Now.AddSeconds(5)
-                }
-            };
-
-            LocalNotificationCenter.Current.Show(request);
-        }
-
-        [RelayCommand]
-        async Task Tap()
-        {
-            await Shell.Current.GoToAsync(nameof(MoodCreationView));
+            await Shell.Current.GoToAsync(v);
         }
     }
 }
