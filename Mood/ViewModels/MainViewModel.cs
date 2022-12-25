@@ -11,12 +11,27 @@ using Mood.Systems;
 using Mood.Models;
 using System.Collections.ObjectModel;
 using Mood.Models.ViewTemplates;
+using System.ComponentModel;
 
 namespace Mood.ViewModels
 {
+
+    [QueryProperty("NewMoodEntry", "NewMoodEntry")]
     public partial class MainViewModel : ObservableObject
     {
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
+
+        // This field holds the most recently created MoodEntry
+        MoodEntry newMoodEntry;
+        public MoodEntry NewMoodEntry
+        {
+            get => newMoodEntry;
+            set
+            {
+                newMoodEntry = value;
+                MoodEntries.Add(newMoodEntry);
+            }
+        }
 
         public MainViewModel()
         {
@@ -24,28 +39,13 @@ namespace Mood.ViewModels
         }
 
         /// <summary>
-        /// Create a new mood entry and add it to a collection that implements IEnumerable
-        /// </summary>
-        [RelayCommand]
-        private void CreateMood()
-        {
-            var m = new MoodEntry
-            {
-                CreationDate = DateTime.Now.ToString("M"), // date should be changed to get their data from a datepicker in the UI.
-                CreationTime = DateTime.Now.ToString("T"),
-                Mood = MoodEnum.Good // the mood should also depend on which button the user taps on.
-            };
-            MoodEntries.Add(m);
-        }
-
-        /// <summary>
         /// Changes the current page to MoodCreationView
         /// </summary>
         /// <returns></returns>
         [RelayCommand]
-        async Task Tap() // change name
+        async Task ChangeView(string v)
         {
-            await Shell.Current.GoToAsync(nameof(MoodCreationView));
+            await Shell.Current.GoToAsync(v);
         }
     }
 }

@@ -14,7 +14,7 @@
         VerticalOptions="Start">
             <Button.GestureRecognizers>
                 <TapGestureRecognizer 
-                    Command="{Binding TapCommand}"/>
+                    Command="{Binding ChangeViewCommand}" CommandParameter="MoodCreationView"/>
                 <!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=TapCommand}"
                     CommandParameter="{Binding .}"/>-->
             </Button.GestureRecognizers>
@@ -48,8 +48,7 @@
         <HorizontalStackLayout
             VerticalOptions="End">
             <Button
-                Text="Front"
-                Command="{Binding CreateMoodCommand}">
+                Text="Front">
             </Button>
             <Button
                 Text="Graph">
