@@ -7,7 +7,7 @@
              x:DataType="viewmodel:MainViewModel">
 
     <Grid>
-        <Button
+        <!--<Button
         x:Name="NewEntryButton"
         Text="New Mood"
         SemanticProperties.Hint="Create a new mood entry."
@@ -15,10 +15,8 @@
             <Button.GestureRecognizers>
                 <TapGestureRecognizer 
                     Command="{Binding ChangeViewCommand}" CommandParameter="MoodCreationView"/>
-                <!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=TapCommand}"
-                    CommandParameter="{Binding .}"/>-->
             </Button.GestureRecognizers>
-        </Button>
+        </Button>-->
         <ScrollView
             Margin="0, 50, 0, 50"
             VerticalOptions="Start">
@@ -45,24 +43,66 @@
                                        Margin="184, 0, 0, 0"/>
                                 <Label Text="{Binding Mood}"
                                        Margin="84, 50, 0, 0"/>
+                                <ImageButton Source="templatemenu.png"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             HorizontalOptions="Start"
+                                             VerticalOptions="Start"
+                                             Margin="285, 5, 0, 0"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
         </ScrollView>
-        <HorizontalStackLayout
-            VerticalOptions="End">
-            <Button
-                Text="Front">
-            </Button>
-            <Button
-                Text="Graph">
-            </Button>
-            <Button
-                Text="TODO">
-            </Button>
-        </HorizontalStackLayout>
+        <Grid HorizontalOptions="Center"
+              VerticalOptions="End"
+              HeightRequest="60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="menu_entries.png"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Grid.Column="0"
+                         HorizontalOptions="Center">
+            </ImageButton>
+            <ImageButton Source="menu_chart.png"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Grid.Column="1"
+                         HorizontalOptions="Center">
+            </ImageButton>
+            <Border HeightRequest="60"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Margin="0, 0, 0, 20"
+                    StrokeShape="RoundRectangle 5, 5, 5, 5"
+                    Grid.Column="2">
+                <ImageButton Source="menu_more.png"
+                             HeightRequest="60"
+                             WidthRequest="60"
+                             HorizontalOptions="Center"
+                             Command="{Binding ChangeViewCommand}" CommandParameter="MoodCreationView">
+                </ImageButton>
+            </Border>
+            <ImageButton Source="menu_todo.png"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Grid.Column="3"
+                         HorizontalOptions="Center">
+            </ImageButton>
+            <ImageButton Source="menu_settings.png"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         Grid.Column="4"
+                         HorizontalOptions="Center">
+            </ImageButton>
+        </Grid>
     </Grid>
 
 </ContentPage>
