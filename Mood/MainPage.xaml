@@ -5,7 +5,6 @@
              xmlns:viewmodel="clr-namespace:Mood.ViewModels"
              xmlns:model="clr-namespace:Mood.Models"
              x:DataType="viewmodel:MainViewModel">
-
     <Grid>
         <!--<Button
         x:Name="NewEntryButton"
@@ -17,19 +16,16 @@
                     Command="{Binding ChangeViewCommand}" CommandParameter="MoodCreationView"/>
             </Button.GestureRecognizers>
         </Button>-->
-        <ScrollView
-            Margin="0, 50, 0, 50"
-            VerticalOptions="Start">
-            <VerticalStackLayout
-                x:Name="mainStack"
-                Spacing="15"
-                Padding="30,0"
-                VerticalOptions="Center"
-                BindableLayout.ItemsSource="{Binding MoodEntries}">
+        <ScrollView Margin="0, 50, 0, 50"
+                    VerticalOptions="Start">
+            <VerticalStackLayout x:Name="mainStack"
+                                 Spacing="15"
+                                 Padding="30,0"
+                                 VerticalOptions="Center"
+                                 BindableLayout.ItemsSource="{Binding MoodEntries}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="model:MoodEntry">
-                        <Border
-                            StrokeShape="RoundRectangle 5, 5, 5, 5">
+                        <Border StrokeShape="RoundRectangle 5, 5, 5, 5">
                             <Grid>
                                 <Image Source="{Binding Picture}"
                                        WidthRequest="60"
@@ -100,9 +96,9 @@
                          HeightRequest="60"
                          WidthRequest="60"
                          Grid.Column="4"
-                         HorizontalOptions="Center">
+                         HorizontalOptions="Center"
+                         Command="{Binding ChangeViewCommand}" CommandParameter="SettingsView">
             </ImageButton>
         </Grid>
     </Grid>
-
 </ContentPage>

@@ -15,8 +15,6 @@ using System.ComponentModel;
 
 namespace Mood.ViewModels
 {
-
-    //[QueryProperty("MoodEntry", "NewMoodEntry")]
     public partial class MainViewModel : ObservableObject, IQueryAttributable
     {
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
