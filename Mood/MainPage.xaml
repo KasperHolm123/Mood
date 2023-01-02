@@ -18,38 +18,36 @@
         </Button>-->
         <ScrollView Margin="0, 50, 0, 50"
                     VerticalOptions="Start">
-            <VerticalStackLayout x:Name="mainStack"
-                                 Spacing="15"
-                                 Padding="30,0"
-                                 VerticalOptions="Center"
-                                 BindableLayout.ItemsSource="{Binding MoodEntries}">
-                <BindableLayout.ItemTemplate>
+            <ListView ItemsSource="{Binding MoodEntries}">
+                <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:MoodEntry">
-                        <Border StrokeShape="RoundRectangle 5, 5, 5, 5">
-                            <Grid>
-                                <Image Source="{Binding Picture}"
+                        <ViewCell>
+                            <Border StrokeShape="RoundRectangle 5, 5, 5, 5">
+                                <Grid>
+                                    <Image Source="{Binding Picture}"
                                        WidthRequest="60"
                                        HeightRequest="60"
                                        HorizontalOptions="Start"
                                        VerticalOptions="Center"
                                        Margin="5, 0, 0, 0"/>
-                                <Label Text="{Binding CreationDate}"
+                                    <Label Text="{Binding CreationDate}"
                                        Margin="84, 0, 0, 0"/>
-                                <Label Text="{Binding CreationTime}"
+                                    <Label Text="{Binding CreationTime}"
                                        Margin="184, 0, 0, 0"/>
-                                <Label Text="{Binding Mood}"
+                                    <Label Text="{Binding Mood}"
                                        Margin="84, 50, 0, 0"/>
-                                <ImageButton Source="templatemenu.png"
+                                    <ImageButton Source="templatemenu.png"
                                              WidthRequest="30"
                                              HeightRequest="30"
                                              HorizontalOptions="Start"
                                              VerticalOptions="Start"
                                              Margin="285, 5, 0, 0"/>
-                            </Grid>
-                        </Border>
+                                </Grid>
+                            </Border>
+                        </ViewCell>
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </VerticalStackLayout>
+                </ListView.ItemTemplate>
+            </ListView>
         </ScrollView>
         <Grid HorizontalOptions="Center"
               VerticalOptions="End"
