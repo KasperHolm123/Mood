@@ -17,13 +17,16 @@
             </Button.GestureRecognizers>
         </Button>-->
         <ListView ItemsSource="{Binding MoodEntries}"
+                  BackgroundColor="Transparent"
                   HorizontalOptions="Center"
                   VerticalOptions="Start"
-                  Margin="0, 50, 0, 50">
+                  Margin="0, 50, 0, 50"
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MoodEntry">
                     <ViewCell>
-                        <Border StrokeShape="RoundRectangle 5, 5, 5, 5">
+                        <Border StrokeShape="RoundRectangle 5, 5, 5, 5"
+                                Margin="0, 5, 0, 5">
                             <Grid>
                                 <Image Source="{Binding Picture}"
                                     WidthRequest="60"
@@ -37,21 +40,12 @@
                                     Margin="184, 0, 0, 0"/>
                                 <Label Text="{Binding Mood}"
                                     Margin="84, 50, 0, 0"/>
-                                <ImageButton Source="templatemenu.png"
-                                            WidthRequest="30"
-                                            HeightRequest="30"
-                                            HorizontalOptions="Start"
-                                            VerticalOptions="Start"
-                                            Margin="285, 5, 0, 0"/>
                             </Grid>
                         </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <!--<ScrollView Margin="0, 50, 0, 50"
-                    VerticalOptions="Start">
-        </ScrollView>-->
         <Grid HorizontalOptions="Center"
               VerticalOptions="End"
               HeightRequest="60">
