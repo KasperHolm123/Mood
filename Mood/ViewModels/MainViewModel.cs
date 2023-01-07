@@ -28,6 +28,7 @@ namespace Mood.ViewModels
                 OnPropertyChanged();
             }
         }
+        public bool IsBusy { get; set; }
 
         /// <summary>
         /// Apply query attributes if any are supplied.
@@ -58,7 +59,13 @@ namespace Mood.ViewModels
                 MoodEntries.Remove(e);
         }
 
-
+        [RelayCommand]
+        async Task Refresh()
+        {
+            IsBusy = true;
+            await Task.Delay(2000);
+            IsBusy = false;
+        }
 
         /// <summary>
         /// Changes the current page to MoodCreationView

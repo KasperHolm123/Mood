@@ -17,12 +17,14 @@
             </Button.GestureRecognizers>
         </Button>-->
         <ListView ItemsSource="{Binding MoodEntries}"
+                  CachingStrategy="RecycleElement"
                   BackgroundColor="Transparent"
                   HorizontalOptions="Center"
                   VerticalOptions="Start"
                   Margin="0, 50, 0, 80"
                   HasUnevenRows="True"
-                  SelectedItem="{Binding SelectedEntry, Mode=TwoWay}">
+                  SelectedItem="{Binding SelectedEntry, Mode=TwoWay}"
+                  SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MoodEntry">
                     <ViewCell>
