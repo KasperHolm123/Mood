@@ -9,5 +9,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 
 		Routing.RegisterRoute(nameof(MoodCreationView), typeof(MoodCreationView));
-	}
+        Routing.RegisterRoute(nameof(SettingsView), typeof(SettingsView));
+    }
 }

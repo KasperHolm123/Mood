@@ -4,9 +4,9 @@ namespace Mood.Views;
 
 public partial class MoodCreationView : ContentPage
 {
-	public MoodCreationView(MoodCreationViewModel model)
+	public MoodCreationView(MoodCreationViewModel m)
 	{
 		InitializeComponent();
-		BindingContext = model;
+		BindingContext = m;
 	}
 }

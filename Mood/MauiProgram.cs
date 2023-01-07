@@ -25,6 +25,9 @@ public static class MauiProgram
         builder.Services.AddTransient<MoodCreationView>();
         builder.Services.AddTransient<MoodCreationViewModel>();
 
+        builder.Services.AddTransient<SettingsView>();
+        builder.Services.AddTransient<SettingsViewModel>();
+
         return builder.Build();
 	}
 }

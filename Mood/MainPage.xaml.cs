@@ -5,10 +5,10 @@ namespace Mood;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage(MainViewModel model)
+	public MainPage(MainViewModel m)
 	{
 		InitializeComponent();
-		BindingContext = model;
+		BindingContext = m;
 	}
 }
 
