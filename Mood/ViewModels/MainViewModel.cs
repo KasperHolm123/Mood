@@ -18,6 +18,16 @@ namespace Mood.ViewModels
     public partial class MainViewModel : ObservableObject, IQueryAttributable
     {
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
+        MoodEntry selectedEntry;
+        public MoodEntry SelectedEntry
+        {
+            get => selectedEntry;
+            set
+            {
+                selectedEntry = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Apply query attributes if any are supplied.
@@ -27,9 +37,7 @@ namespace Mood.ViewModels
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.ContainsKey("NewMoodEntry"))
-            {
                 MoodEntries.Add(query["NewMoodEntry"] as MoodEntry);
-            }
             query.Clear();
 
         }
@@ -38,6 +46,19 @@ namespace Mood.ViewModels
         {
             MoodEntries = new();
         }
+
+        /// <summary>
+        /// Deletes the passed-in MoodEntry
+        /// </summary>
+        /// <param name="e"></param>
+        [RelayCommand]
+        public void DeleteEntry(MoodEntry e)
+        {
+            if (e != null)
+                MoodEntries.Remove(e);
+        }
+
+
 
         /// <summary>
         /// Changes the current page to MoodCreationView
