@@ -12,12 +12,17 @@ using Mood.Models;
 using System.Collections.ObjectModel;
 using Mood.Models.ViewTemplates;
 using System.ComponentModel;
+using Mood.Models.Interfaces;
+using SQLite;
 
 namespace Mood.ViewModels
 {
-    public partial class MainViewModel : ObservableObject, IQueryAttributable
+    public partial class MainViewModel : ObservableObject, IQueryAttributable, IDatabase
     {
+        #region Fields
+
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
+
         MoodEntry selectedEntry;
         public MoodEntry SelectedEntry
         {
@@ -28,7 +33,13 @@ namespace Mood.ViewModels
                 OnPropertyChanged();
             }
         }
-        public bool IsBusy { get; set; }
+
+        #endregion
+
+        public MainViewModel()
+        {
+            MoodEntries = new();
+        }
 
         /// <summary>
         /// Apply query attributes if any are supplied.
@@ -43,11 +54,6 @@ namespace Mood.ViewModels
 
         }
 
-        public MainViewModel()
-        {
-            MoodEntries = new();
-        }
-
         /// <summary>
         /// Deletes the passed-in MoodEntry
         /// </summary>
@@ -59,14 +65,6 @@ namespace Mood.ViewModels
                 MoodEntries.Remove(e);
         }
 
-        [RelayCommand]
-        async Task Refresh()
-        {
-            IsBusy = true;
-            await Task.Delay(2000);
-            IsBusy = false;
-        }
-
         /// <summary>
         /// Changes the current page to MoodCreationView
         /// </summary>
@@ -76,5 +74,38 @@ namespace Mood.ViewModels
         {
             await Shell.Current.GoToAsync(v);
         }
+
+        #region IDatabase implementation
+
+        private string _storagePath = FileSystem.AppDataDirectory;
+        public void Get()
+        {
+            using (SQLiteConnection conn = new(_storagePath))
+            {
+
+            }
+        }
+
+        public void Upsert()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
