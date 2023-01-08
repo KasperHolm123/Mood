@@ -15,7 +15,7 @@ namespace Mood.Repositories
         public void Add(MoodEntry entity)
         {
             using SQLiteConnection conn = new(path);
-            conn.CreateTable<MoodEntry>();
+            conn.Insert(entity);
         }
 
         public void Delete(MoodEntry entity)
@@ -28,9 +28,10 @@ namespace Mood.Repositories
             throw new NotImplementedException();
         }
 
-        public MoodEntry GetAll()
+        public List<MoodEntry> GetAll()
         {
-            throw new NotImplementedException();
+            using SQLiteConnection conn = new(path);
+            return conn.Table<MoodEntry>().ToList();
         }
 
         public void Update(MoodEntry entity)

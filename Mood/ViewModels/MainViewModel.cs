@@ -41,8 +41,8 @@ namespace Mood.ViewModels
 
         public MainViewModel(IMoodEntryRepository repo)
         {
-            MoodEntries = new();
             _repo = repo;
+            MoodEntries = new(_repo.GetAll());
         }
         
         /// <summary>
@@ -53,7 +53,11 @@ namespace Mood.ViewModels
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.ContainsKey("NewMoodEntry"))
-                MoodEntries.Add(query["NewMoodEntry"] as MoodEntry);
+            {
+                var entity = query["NewMoodEntry"] as MoodEntry;
+                MoodEntries.Add(entity);
+                _repo.Add(entity);
+            }
             query.Clear();
         }
 
@@ -66,7 +70,6 @@ namespace Mood.ViewModels
         {
             if (e != null)
                 MoodEntries.Remove(e);
-            _repo.Add(e);
         }
 
         /// <summary>

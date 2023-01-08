@@ -12,6 +12,6 @@ namespace Mood.Interfaces
         void Update(T entity);
         void Delete(T entity);
         T Get(T entity);
-        T GetAll();
+        List<T> GetAll();
     }
 }
