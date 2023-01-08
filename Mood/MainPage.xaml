@@ -6,16 +6,6 @@
              xmlns:model="clr-namespace:Mood.Models"
              x:DataType="viewmodel:MainViewModel">
     <Grid>
-        <!--<Button
-        x:Name="NewEntryButton"
-        Text="New Mood"
-        SemanticProperties.Hint="Create a new mood entry."
-        VerticalOptions="Start">
-            <Button.GestureRecognizers>
-                <TapGestureRecognizer 
-                    Command="{Binding ChangeViewCommand}" CommandParameter="MoodCreationView"/>
-            </Button.GestureRecognizers>
-        </Button>-->
         <ListView ItemsSource="{Binding MoodEntries}"
                   CachingStrategy="RecycleElement"
                   BackgroundColor="Transparent"

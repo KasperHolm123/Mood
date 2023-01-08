@@ -12,12 +12,20 @@ using Mood.Models;
 using System.Collections.ObjectModel;
 using Mood.Models.ViewTemplates;
 using System.ComponentModel;
+using SQLite;
+using Mood.Repositories;
+using Mood.Interfaces;
 
 namespace Mood.ViewModels
 {
     public partial class MainViewModel : ObservableObject, IQueryAttributable
     {
+        #region Fields
+
+        private readonly IMoodEntryRepository _repo;
+
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
+
         MoodEntry selectedEntry;
         public MoodEntry SelectedEntry
         {
@@ -28,8 +36,15 @@ namespace Mood.ViewModels
                 OnPropertyChanged();
             }
         }
-        public bool IsBusy { get; set; }
 
+        #endregion
+
+        public MainViewModel(IMoodEntryRepository repo)
+        {
+            _repo = repo;
+            MoodEntries = new(_repo.GetAll());
+        }
+        
         /// <summary>
         /// Apply query attributes if any are supplied.
         /// Any and all atttributes will be cleared after use.
@@ -38,14 +53,12 @@ namespace Mood.ViewModels
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.ContainsKey("NewMoodEntry"))
-                MoodEntries.Add(query["NewMoodEntry"] as MoodEntry);
+            {
+                var entity = query["NewMoodEntry"] as MoodEntry;
+                MoodEntries.Add(entity);
+                _repo.Add(entity);
+            }
             query.Clear();
-
-        }
-
-        public MainViewModel()
-        {
-            MoodEntries = new();
         }
 
         /// <summary>
@@ -56,15 +69,10 @@ namespace Mood.ViewModels
         public void DeleteEntry(MoodEntry e)
         {
             if (e != null)
+            {
                 MoodEntries.Remove(e);
-        }
-
-        [RelayCommand]
-        async Task Refresh()
-        {
-            IsBusy = true;
-            await Task.Delay(2000);
-            IsBusy = false;
+                _repo.Delete(e);
+            }
         }
 
         /// <summary>

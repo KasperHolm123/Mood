@@ -1,16 +1,30 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Mood.Models
 {
+    [Table("moodentry")]
     public class MoodEntry
     {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+        [Required]
         public string CreationDate { get; set; }
+        [Required]
         public string CreationTime { get; set; }
+        [Required]
+        public int MoodID
+        {
+            get => (int)Mood;
+            set => Mood = (MoodEnum)value;
+        }
         public MoodEnum Mood { get; set; }
+        [Required]
         public string Picture { get; set; }
 
     }
