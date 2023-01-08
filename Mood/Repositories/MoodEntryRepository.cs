@@ -20,7 +20,8 @@ namespace Mood.Repositories
 
         public void Delete(MoodEntry entity)
         {
-            throw new NotImplementedException();
+            using SQLiteConnection conn = new(path);
+            conn.Delete(entity);
         }
 
         public MoodEntry Get(MoodEntry entity)

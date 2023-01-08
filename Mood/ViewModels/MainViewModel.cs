@@ -69,7 +69,10 @@ namespace Mood.ViewModels
         public void DeleteEntry(MoodEntry e)
         {
             if (e != null)
+            {
                 MoodEntries.Remove(e);
+                _repo.Delete(e);
+            }
         }
 
         /// <summary>
