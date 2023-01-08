@@ -12,14 +12,16 @@ using Mood.Models;
 using System.Collections.ObjectModel;
 using Mood.Models.ViewTemplates;
 using System.ComponentModel;
-using Mood.Models.Interfaces;
 using SQLite;
+using Mood.Repositories;
 
 namespace Mood.ViewModels
 {
-    public partial class MainViewModel : ObservableObject, IQueryAttributable, IDatabase
+    public partial class MainViewModel : ObservableObject, IQueryAttributable
     {
         #region Fields
+
+        public MoodEntryRepository meRepo;
 
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
 
@@ -36,11 +38,12 @@ namespace Mood.ViewModels
 
         #endregion
 
-        public MainViewModel()
+        public MainViewModel(MoodEntryRepository meRepo)
         {
             MoodEntries = new();
+            this.meRepo = meRepo;
         }
-
+        
         /// <summary>
         /// Apply query attributes if any are supplied.
         /// Any and all atttributes will be cleared after use.
@@ -51,7 +54,6 @@ namespace Mood.ViewModels
             if (query.ContainsKey("NewMoodEntry"))
                 MoodEntries.Add(query["NewMoodEntry"] as MoodEntry);
             query.Clear();
-
         }
 
         /// <summary>
@@ -63,6 +65,7 @@ namespace Mood.ViewModels
         {
             if (e != null)
                 MoodEntries.Remove(e);
+            File.Delete(Path.Combine(FileSystem.AppDataDirectory, "testfile.txt"));
         }
 
         /// <summary>
@@ -74,38 +77,5 @@ namespace Mood.ViewModels
         {
             await Shell.Current.GoToAsync(v);
         }
-
-        #region IDatabase implementation
-
-        private string _storagePath = FileSystem.AppDataDirectory;
-        public void Get()
-        {
-            using (SQLiteConnection conn = new(_storagePath))
-            {
-
-            }
-        }
-
-        public void Upsert()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
     }
 }

@@ -21,10 +21,7 @@ namespace Mood.Models
         public int MoodID
         {
             get => (int)Mood;
-            set
-            {
-                Mood = (MoodEnum)value;
-            }
+            set => Mood = (MoodEnum)value;
         }
         public MoodEnum Mood { get; set; }
         [Required]
