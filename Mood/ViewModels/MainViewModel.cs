@@ -14,6 +14,7 @@ using Mood.Models.ViewTemplates;
 using System.ComponentModel;
 using SQLite;
 using Mood.Repositories;
+using Mood.Interfaces;
 
 namespace Mood.ViewModels
 {
@@ -21,7 +22,7 @@ namespace Mood.ViewModels
     {
         #region Fields
 
-        public MoodEntryRepository meRepo;
+        private readonly IMoodEntryRepository _repo;
 
         public ObservableCollection<MoodEntry> MoodEntries { get; set; } // holds all existing and newly created entries
 
@@ -38,10 +39,10 @@ namespace Mood.ViewModels
 
         #endregion
 
-        public MainViewModel(MoodEntryRepository meRepo)
+        public MainViewModel(IMoodEntryRepository repo)
         {
             MoodEntries = new();
-            this.meRepo = meRepo;
+            _repo = repo;
         }
         
         /// <summary>
@@ -65,7 +66,7 @@ namespace Mood.ViewModels
         {
             if (e != null)
                 MoodEntries.Remove(e);
-            File.Delete(Path.Combine(FileSystem.AppDataDirectory, "testfile.txt"));
+            _repo.Add(e);
         }
 
         /// <summary>

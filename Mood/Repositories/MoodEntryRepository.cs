@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace Mood.Repositories
 {
-    public class MoodEntryRepository : IRepository<MoodEntry>
+    public class MoodEntryRepository : IMoodEntryRepository
     {
+        private string path = Path.Combine("storage/emulated/0/Android/data/com.companyname.mood/files", "db_sqlite.db3");
         public void Add(MoodEntry entity)
         {
-            using (SQLiteConnection conn = new("awoij"))
-            {
-                
-            }
+            using SQLiteConnection conn = new(path);
+            conn.CreateTable<MoodEntry>();
         }
 
         public void Delete(MoodEntry entity)
