@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Plugin.LocalNotification;
-using Mood.Views;
-using Mood.Systems;
 using Mood.Models;
 using System.Collections.ObjectModel;
-using Mood.Models.ViewTemplates;
-using System.ComponentModel;
-using SQLite;
-using Mood.Repositories;
 using Mood.Interfaces;
 
 namespace Mood.ViewModels
@@ -62,17 +50,31 @@ namespace Mood.ViewModels
         }
 
         /// <summary>
-        /// Deletes the passed-in MoodEntry
+        /// Opens a popup window giving the user to either confirm the deletion or
+        /// cancel it.
         /// </summary>
         /// <param name="e"></param>
         [RelayCommand]
-        public void DeleteEntry(MoodEntry e)
+        public async void DeleteEntry(MoodEntry e)
         {
-            if (e != null)
+            App.AlertSvc.ShowConfirmation("Delete?", "OK", (result =>
             {
-                MoodEntries.Remove(e);
-                _repo.Delete(e);
-            }
+                if (result)
+                {
+                    MoodEntries.Remove(e);
+                    _repo.Delete(e);
+                }
+            }));
+        }
+
+        /// <summary>
+        /// Handles the creation of mood entry information panel
+        /// </summary>
+        /// <param name="e"></param>
+        [RelayCommand]
+        public void HandleMoodEntryPopup(MoodEntry e)
+        {
+
         }
 
         /// <summary>
