@@ -1,8 +1,12 @@
 ﻿using Mood.Interfaces;
 using Mood.Repositories;
+using Mood.Services;
 using Mood.Systems;
 using Mood.ViewModels;
 using Mood.Views;
+using Mopups.Hosting;
+using Mopups.Interfaces;
+using Mopups.Services;
 using Plugin.LocalNotification;
 
 namespace Mood;
@@ -13,7 +17,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			//.UseLocalNotification()
+            .UseLocalNotification()
+            .ConfigureMopups()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -47,6 +52,10 @@ public static class MauiProgram
 		{
 			DatabaseConstructor.Up();
 		}
+        #endregion
+
+        #region misc services
+        builder.Services.AddSingleton<IAlertService, AlertService>();
         #endregion
 
         return builder.Build();
