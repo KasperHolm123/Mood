@@ -6,9 +6,11 @@
              x:DataType="viewmodel:SettingsViewModel"
              Title="SettingsView">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Button Text="Clear Data"
+                TextColor="White"
+                FontSize="Medium"
+                BackgroundColor="Red"
+                Command="{Binding ClearEntriesCommand}">
+        </Button>
     </VerticalStackLayout>
 </ContentPage>
