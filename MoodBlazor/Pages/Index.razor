@@ -1,0 +1,7 @@
+﻿@page "/"
+@using MoodBlazor.Components
+@inherits IndexBase
+
+@foreach (var entry in MoodEntries) {
+    <MoodEntryComponent State="@entry.State"/>
+}

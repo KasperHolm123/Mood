@@ -26,7 +26,6 @@ namespace Mood.Models
         public MoodEnum Mood { get; set; }
         [Required]
         public string Picture { get; set; }
-
     }
 
     public enum MoodEnum
