@@ -16,9 +16,9 @@ namespace MoodBlazor.Pages
         {
             MoodEntries = new()
             {
-                new MoodEntry { State = "Good"},
-                new MoodEntry { State = "Decent"},
-                new MoodEntry { State = "Very Good"}
+                new MoodEntry { State = "Good" },
+                new MoodEntry { State = "Decent" },
+                new MoodEntry { State = "Very Good" }
             };
         }
     }
