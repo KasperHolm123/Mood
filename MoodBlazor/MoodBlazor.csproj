@@ -40,7 +40,6 @@
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
-        <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
         <!-- Custom Fonts -->
         <MauiFont Include="Resources\Fonts\*" />
@@ -69,13 +68,24 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <Folder Include="Resources\Images\" />
     </ItemGroup>
 
     <ItemGroup>
-      <MauiImage Update="Resources\Images\dotnet_bot.svg">
+      <MauiImage Include="wwwroot\images\bad.png" />
+      <MauiImage Include="wwwroot\images\decent.png" />
+      <MauiImage Include="wwwroot\images\dotnet_bot.svg">
         <BaseSize>168,208</BaseSize>
       </MauiImage>
+      <MauiImage Include="wwwroot\images\good.png" />
+      <MauiImage Include="wwwroot\images\menu_chart.png" />
+      <MauiImage Include="wwwroot\images\menu_entries.png" />
+      <MauiImage Include="wwwroot\images\menu_more.png" />
+      <MauiImage Include="wwwroot\images\menu_settings.png" />
+      <MauiImage Include="wwwroot\images\menu_todo.png" />
+      <MauiImage Include="wwwroot\images\templatemenu.png" />
+      <MauiImage Include="wwwroot\images\verybad.png" />
+      <MauiImage Include="wwwroot\images\verygood.png" />
     </ItemGroup>
 
 </Project>

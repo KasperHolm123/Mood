@@ -10,16 +10,9 @@ namespace MoodBlazor.Pages
 {
     public class IndexBase : ComponentBase
     {
-        public List<MoodEntry> MoodEntries { get; set; }
-
         public IndexBase()
         {
-            MoodEntries = new()
-            {
-                new MoodEntry { State = "Good" },
-                new MoodEntry { State = "Decent" },
-                new MoodEntry { State = "Very Good" }
-            };
+            
         }
     }
 }

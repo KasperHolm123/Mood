@@ -1,8 +1,12 @@
 ﻿<div>
     <p>@State</p>
+    <p>@CreationDate</p>
 </div>
 
 @code {
     [Parameter]
     public string State { get; set; }
+
+    [Parameter]
+    public DateTime CreationDate { get; set; }
 }
