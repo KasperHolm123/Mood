@@ -1,0 +1,43 @@
+﻿@page "/create/moodentry"
+@using MoodBlazor.Services
+@inject MoodEntryService meService
+@inject NavigationManager NavManager
+
+<div>
+    <input type="date"/>
+</div>
+
+<div>
+    <button @onclick='x => AddEntry("Very Good")'>
+        <img src="images/verygood.png" />
+    </button>
+    <button @onclick='x => AddEntry("Good")'>
+        <img src="images/good.png" />
+    </button>
+    <button @onclick='x => AddEntry("Decent")'>
+        <img src="images/decent.png" />
+    </button>
+    <button @onclick='x => AddEntry("Bad")'>
+        <img src="images/bad.png" />
+    </button>
+    <button @onclick='x => AddEntry("Very Bad")'>
+        <img src="images/verybad.png" />
+    </button>
+</div>
+
+@code {
+
+}
+
+@functions {
+
+    public void AddEntry(string state)
+    {
+        meService.MoodEntries.Add(new Models.MoodEntry()
+        {
+            State = state,
+            CreationDate = DateTime.Now
+        });
+        NavManager.NavigateTo("/");
+    }
+}

@@ -55,9 +55,25 @@ namespace Mood.ViewModels
         /// </summary>
         /// <param name="e"></param>
         [RelayCommand]
-        public async void DeleteEntry(MoodEntry e)
+        public void DeleteEntry(MoodEntry e)
         {
-            App.AlertSvc.ShowConfirmation("Delete?", "OK", (result =>
+            App.AlertSvc.ShowActionSheet("Mood", "Cancel", "Delete", (result) =>
+            {
+                switch (result)
+                {
+                    case "Edit":
+                        // not implemented
+                        break;
+                    case "Delete":
+                        MoodEntries.Remove(e);
+                        _repo.Delete(e);
+                        break;
+                    default:
+                        break;
+                }
+            }, "Edit");
+            /*
+            App.AlertSvc.ShowConfirmation("Are you sure you want to delete this entry?", "", (result =>
             {
                 if (result)
                 {
@@ -65,16 +81,7 @@ namespace Mood.ViewModels
                     _repo.Delete(e);
                 }
             }));
-        }
-
-        /// <summary>
-        /// Handles the creation of mood entry information panel
-        /// </summary>
-        /// <param name="e"></param>
-        [RelayCommand]
-        public void HandleMoodEntryPopup(MoodEntry e)
-        {
-
+            */
         }
 
         /// <summary>

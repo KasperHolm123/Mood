@@ -18,6 +18,13 @@ namespace Mood.Repositories
             conn.Insert(entity);
         }
 
+        public void ClearTable(Type table)
+        {
+            using SQLiteConnection conn = new(path);
+            var map = conn.GetMapping(table);
+            conn.DeleteAll(map);
+        }
+
         public void Delete(MoodEntry entity)
         {
             using SQLiteConnection conn = new(path);

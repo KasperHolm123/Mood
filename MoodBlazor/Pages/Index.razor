@@ -1,0 +1,9 @@
+﻿@page "/"
+@using MoodBlazor.Components
+@using MoodBlazor.Services;
+@inherits IndexBase
+@inject MoodEntryService meService
+
+@foreach (var entry in meService.MoodEntries) {
+    <MoodEntryComponent State="@entry.State" CreationDate="@entry.CreationDate" />
+}
