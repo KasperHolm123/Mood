@@ -18,17 +18,17 @@ namespace MoodBlazor.Services
             {
                 new MoodEntry
                 {
-                    State = "Good",
+                    State = MoodState.Bad,
                     CreationDate = DateTime.Now
                 },
                 new MoodEntry
                 {
-                    State = "Decent",
+                    State = MoodState.Decent,
                     CreationDate = DateTime.Now
                 },
                 new MoodEntry
                 {
-                    State = "Very Good",
+                    State = MoodState.VeryGood,
                     CreationDate = DateTime.Now
                 }
             };
