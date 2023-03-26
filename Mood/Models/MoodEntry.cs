@@ -21,14 +21,14 @@ namespace Mood.Models
         public int MoodID
         {
             get => (int)Mood;
-            set => Mood = (MoodEnum)value;
+            set => Mood = (MoodState)value;
         }
-        public MoodEnum Mood { get; set; }
+        public MoodState Mood { get; set; }
         [Required]
         public string Picture { get; set; }
     }
 
-    public enum MoodEnum
+    public enum MoodState
     {
         VeryGood = 1,
         Good = 2,
@@ -37,26 +37,17 @@ namespace Mood.Models
         VeryBad = 5
     }
 
-    public static class MoodPictures
+    public static class MoodEntryExtensions
     {
-        public static readonly string VeryGood = "verygood.png";
-        public static readonly string Good = "good.png";
-        public static readonly string Decent = "decent.png";
-        public static readonly string Bad = "bad.png";
-        public static readonly string VeryBad = "verybad.png";
-
-        public static string ReturnPicture(string p)
+        public static string ReturnPicture(MoodState state) => state switch
         {
-            return p switch
-            {
-                "1" => VeryGood,
-                "2" => Good,
-                "3" => Decent,
-                "4" => Bad,
-                "5" => VeryBad,
-                _ => default
-            };
-        }
+            MoodState.VeryGood => "verygood.png",
+            MoodState.Good => "good.png",
+            MoodState.Decent => "decent.png",
+            MoodState.Bad => "bad.png",
+            MoodState.VeryBad => "verybad.png",
+            _ => throw new NotImplementedException()
+        };
     }
 }
     

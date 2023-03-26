@@ -22,14 +22,14 @@ namespace Mood.ViewModels
         /// <param name="x"></param>
         /// <returns></returns>
         [RelayCommand]
-        async Task CreateEntry(string x)
+        async Task CreateEntry(MoodState state)
         {
             var m = new MoodEntry
             {
                 CreationDate = DateTime.Now.ToString("M"), // date should be changed to get their data from a datepicker in the UI.
                 CreationTime = DateTime.Now.ToString("T"),
-                Mood = (MoodEnum)int.Parse(x),
-                Picture = MoodPictures.ReturnPicture(x)
+                Mood = state,
+                Picture = MoodEntryExtensions.ReturnPicture(state)
             };
             await Shell.Current.GoToAsync("..", new Dictionary<string, object>
             {

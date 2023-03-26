@@ -27,7 +27,7 @@ namespace MoodBlazor.Models
 
     public static class MoodEntryExtensions
     {
-        public static string ReturnPicture(this MoodState state) => state switch
+        public static string ReturnPicture(MoodState state) => state switch
         {
             MoodState.VeryGood => "verygood.png",
             MoodState.Good => "good.png",

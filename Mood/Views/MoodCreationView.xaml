@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Mood.ViewModels"
+             xmlns:model="clr-namespace:Mood.Models"
              x:DataType="viewmodel:MoodCreationViewModel"
              x:Class="Mood.Views.MoodCreationView"
              Title="MoodCreationView">
@@ -29,7 +30,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="1"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Static model:MoodState.VeryGood}"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -44,7 +45,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="2"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Static model:MoodState.Good}"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -59,7 +60,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="3"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Static model:MoodState.Decent}"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -74,7 +75,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="4"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Static model:MoodState.Bad}"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
@@ -89,7 +90,7 @@
                      HeightRequest="64">
                     <ImageButton.GestureRecognizers>
                         <TapGestureRecognizer 
-                            Command="{Binding CreateEntryCommand}" CommandParameter="5"/>
+                            Command="{Binding CreateEntryCommand}" CommandParameter="{x:Static model:MoodState.VeryBad}"/>
                     </ImageButton.GestureRecognizers>
                 </ImageButton>
             </Grid>
